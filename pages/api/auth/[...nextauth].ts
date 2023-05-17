@@ -20,6 +20,17 @@ export default NextAuth({
         apiVersion: '2022-11-15',
       });
       // Stripe customer
+      if (user.name && user.email) {
+        const customer = await stripe.customers.create({
+          email: user.email,
+          name: user.name,
+        });
+        // Update user prisma with the stripe id
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { StripeCustomerId: customer.id },
+        });
+      }
     },
   },
 });
