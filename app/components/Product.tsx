@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Product({ name, image, price }) {
   return (
     <div>
