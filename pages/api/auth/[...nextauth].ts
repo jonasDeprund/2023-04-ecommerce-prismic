@@ -34,7 +34,7 @@ export const authOptions: NextAuthOptions = {
         // Update user prisma with the stripe id
         await prisma.user.update({
           where: { id: user.id },
-          data: { StripeCustomerId: customer.id },
+          data: { StripeCustomerId: costomer.id },
         });
       }
     },

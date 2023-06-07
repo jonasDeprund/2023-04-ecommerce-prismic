@@ -7,7 +7,6 @@ const getProducts = async () => {
   });
 
   const products = await stripe.products.list();
-  console.log(products);
 
   const productWithPrices = await Promise.all(
     products.data.map(async (product) => {
@@ -30,7 +29,7 @@ export default async function Home() {
   return (
     <main>
       {products.map((product) => (
-        <Product {...Product} />
+        <Product {...product} />
       ))}
     </main>
   );
