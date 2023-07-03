@@ -4,10 +4,18 @@ import { ProductType } from '@/types/ProductsType';
 
 export default function Product({ name, image, price }: ProductType) {
   return (
-    <div>
-      <Image src={image} alt={name} width={400} height={400} />
-      <h1>{name}</h1>
-      {formatPrice(price as number)}
+    <div className="text-gray-700">
+      <Image
+        src={image}
+        alt={name}
+        width={800}
+        height={800}
+        className="w-full h-80 object-cover rounded-lg"
+      />
+      <div className="font-medium py-2">
+        <h1>{name}</h1>
+        <h2 className="text-sm text-teal-700">{price && formatPrice(price)}</h2>
+      </div>
     </div>
   );
 }
