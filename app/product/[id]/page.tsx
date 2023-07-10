@@ -1,8 +1,16 @@
-export default async function Product() {
+import Image from 'next/image';
+
+export default async function Product({ searchParams }) {
   return (
-    <div>
+    <div className="flex justify-between gap-24 p-12 text-gray-700">
+      <Image
+        src={searchParams.image}
+        alt={searchParams.name}
+        width={600}
+        height={600}
+      />
       <div>
-        <h1>Name of product</h1>
+        <h1>{searchParams.name}</h1>
         <p>Description</p>
       </div>
     </div>

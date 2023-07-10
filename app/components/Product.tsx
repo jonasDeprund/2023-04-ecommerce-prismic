@@ -5,7 +5,9 @@ import Link from 'next/link';
 
 export default function Product({ name, image, price, id }: ProductType) {
   return (
-    <Link href={`/product/${id}`}>
+    <Link
+      href={{ pathname: `/product/${id}`, query: { name, image, price, id } }}
+    >
       <div className="text-gray-700">
         <Image
           src={image}
