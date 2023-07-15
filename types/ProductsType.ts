@@ -6,8 +6,8 @@ export type ProductType = {
   id: string;
   description: string | null;
   metadata: MetadataType;
-}
+};
 
 type MetadataType = {
-  features = string 
-}
+  features: string;
+};
