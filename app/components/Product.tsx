@@ -31,7 +31,7 @@ export default function Product({
         <div className="font-medium py-2">
           <h1>{name}</h1>
           <h2 className="text-sm text-teal-700">
-            {price && formatPrice(price)}
+            {unit_amount && formatPrice(unit_amount)}
           </h2>
         </div>
       </div>
