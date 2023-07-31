@@ -2,8 +2,6 @@
 
 import { ReactNode, useEffect, useState } from 'react';
 
-import React from 'react';
-
 export default function Hydrate({ children }: { children: ReactNode }) {
   const [isHydrated, setIsHydrated] = useState(false);
 
@@ -11,6 +9,5 @@ export default function Hydrate({ children }: { children: ReactNode }) {
   useEffect(() => {
     setIsHydrated(true);
   }, []);
-  return;
-  <>{isHydrated ? <>children</> : <div>Loading...</div>}</>;
+  return <>{isHydrated ? <>{children}</> : <div>Loading...</div>}</>;
 }
