@@ -14,7 +14,7 @@ type CartState = {
   isOpen: boolean;
   cart: cartItem[];
   toggleCart: () => void;
-  addProduct: (item: CartItem) => void;
+  addProduct: (item: cartItem) => void;
 };
 
 export const useCartStore = create<CartState>()(
