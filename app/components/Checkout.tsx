@@ -20,8 +20,11 @@ export default function Checkout() {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
         items: cartStore.cart,
-        payment_intent_id: paymentIntent,
+        payment_intent_id: cartStore.paymentIntent,
       }),
+    }).then((res) => {
+      console.log(res);
+      // Set client secret and the payment intent associated
     });
   }, []);
 }
