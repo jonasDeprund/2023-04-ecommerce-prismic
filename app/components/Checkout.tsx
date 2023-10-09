@@ -4,6 +4,7 @@ import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { useCartStore } from '@/store';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -11,6 +12,7 @@ const stripePromise = loadStripe(
 
 export default function Checkout() {
   const cartStore = useCartStore();
+  const router = useRouter();
   const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
@@ -23,8 +25,18 @@ export default function Checkout() {
         payment_intent_id: cartStore.paymentIntent,
       }),
     }).then((res) => {
-      console.log(res);
-      // Set client secret and the payment intent associated
+      if (res.status === 403) {
+        router.push('/api/auth/signin');
+      }
+      return res.json();
+    }).then((data)=> {
+      console.log(data);
     });
   }, []);
+
+  return (
+    <div>
+      <h1>Checkout</h1>
+    </div>
+  );
 }

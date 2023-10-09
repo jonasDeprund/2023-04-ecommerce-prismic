@@ -19,4 +19,9 @@ export default async function handler(
   }
   // Extract data from the body
   const { items, payment_intent_id } = req.body;
+
+  // Data necesseray for order
+  const orderData = {
+    user: {connect: {id: userSession.user?.id}},
+    
 }
