@@ -24,14 +24,16 @@ export default function Checkout() {
         items: cartStore.cart,
         payment_intent_id: cartStore.paymentIntent,
       }),
-    }).then((res) => {
-      if (res.status === 403) {
-        router.push('/api/auth/signin');
-      }
-      return res.json();
-    }).then((data)=> {
-      console.log(data);
-    });
+    })
+      .then((res) => {
+        if (res.status === 403) {
+          return router.push('/api/auth/signin');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
   }, []);
 
   return (
