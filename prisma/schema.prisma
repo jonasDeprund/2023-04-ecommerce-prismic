@@ -21,6 +21,11 @@ model User {
   sessions              Session[]
   @@map("users")
 }
+
+model Order{
+  id string
+}
+
 model Account {
   id                 String    @id @default(cuid())
   userId              String    @map("user_id")

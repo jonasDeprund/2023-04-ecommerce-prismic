@@ -40,7 +40,7 @@ export default async function handler(
         description: item.description,
         unit_amount: item.unit_amount,
         quantity: item.quantity
-      }))
+      })),
     }
   };
 
