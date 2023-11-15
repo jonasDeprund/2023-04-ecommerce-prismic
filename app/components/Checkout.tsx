@@ -32,6 +32,7 @@ export default function Checkout() {
         return res.json();
       })
       .then((data) => {
+        // Lydia
         console.log(data);
       });
   }, []);
