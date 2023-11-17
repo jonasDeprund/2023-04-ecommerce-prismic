@@ -37,9 +37,23 @@ export default function Checkout() {
       });
   }, []);
 
+  const options: StripeElementsOptions = {
+    clientSecret,
+    appearance: {
+      theme: 'stripe',
+      labels: 'floating',
+    },
+  };
+
   return (
     <div>
-      <h1>Checkout</h1>
+      {clientSecret && (
+        <div>
+          <Elements options={options} stripe={stripePromise}>
+            <h1>Form</h1>
+          </Elements>
+        </div>
+      )}
     </div>
   );
 }
