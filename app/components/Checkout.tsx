@@ -32,8 +32,8 @@ export default function Checkout() {
         return res.json();
       })
       .then((data) => {
-        // Lydia
-        console.log(data);
+        setClientSecret(data.paymentIntent.client_secret);
+        cartStore.setPaymentIntent(data.paymentIntent.id);
       });
   }, []);
 
