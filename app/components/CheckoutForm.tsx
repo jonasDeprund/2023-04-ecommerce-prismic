@@ -1,10 +1,30 @@
 'use client';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { PaymentElement } from '@stripe/react-stripe-js';
+import {
+  PaymentElement,
+  useStripe,
+  useElements,
+} from '@stripe/react-stripe-js';
 import formatPrice from '@/util/PriceFormat';
+import { useCartStore } from '@/store';
 
-export default function CheckoutForm() {
+export default function CheckoutForm({
+  clientSecret,
+}: {
+  clientSecret: string;
+}) {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const cartStore = useCartStore();
+
+  const totalPrice = cartStore.cart.reduce((acc, item) => {
+    return acc + item.unit_amount * item.quantity!;
+  }, 0);
+
   return (
     <form id="payment-form">
       <PaymentElement id="payment-element" options={{ layout: 'tabs' }} />
