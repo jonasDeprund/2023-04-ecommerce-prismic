@@ -7,6 +7,7 @@ import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
 import basket from '@/public/carte-de-shopping.png';
 import { AnimatePresence, motion } from 'framer-motion';
 import Checkout from './Checkout';
+import OrderConfirmed from './OrderConfirmed';
 
 export default function Cart() {
   const cartStore = useCartStore();
@@ -115,6 +116,7 @@ export default function Cart() {
         ) : null}
         {/* Checkout form */}
         {cartStore.onCheckout === 'checkout' && <Checkout />}
+        {cartStore.onCheckout === 'success' && <OrderConfirmed />}
         <AnimatePresence>
           {!cartStore.cart.length && (
             <motion.div
