@@ -5,9 +5,22 @@ import Image from 'next/image';
 import dance from '@/public/dance.gif';
 import Link from 'next/link';
 import { useCartStore } from '@/store';
+import { useEffect } from 'react';
 
 export default function OrderConfirmed() {
   const cartStore = useCartStore();
+
+  useEffect(() => {
+    cartStore.setPaymentIntent('');
+    cartStore.clearCart();
+  }, []);
+
+  const checkoutOrder = () => {
+    setTimeout(() => {
+      cartStore.setCheckout('cart');
+    }, 1000);
+    cartStore.toggleCart();
+  };
 
   return (
     <motion.div
@@ -21,15 +34,10 @@ export default function OrderConfirmed() {
         <Image src={dance} className="py-8" alt="dancing man" />
         <div className="flex items-center justify-center gap-12">
           <Link href={'/dashbaord'}>
-            <button className="font-medium">Check your order</button>
+            <button onClick={checkoutOrder} className="font-medium">
+              Check your order
+            </button>
           </Link>
-          <button
-            onClick={() => {
-              cartStore.setCheckout('cart'), cartStore.toggleCart();
-            }}
-          >
-            Create a new order
-          </button>
         </div>
       </div>
     </motion.div>
