@@ -23,6 +23,7 @@ export default function OrderConfirmed() {
   };
 
   return (
+    //
     <motion.div
       className="flex items-center justify-center my-12"
       initial={{ scale: 0.5, opacity: 0 }}
