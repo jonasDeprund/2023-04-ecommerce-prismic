@@ -58,5 +58,3 @@ export default async function handler(
   }
   res.json({ received: true });
 }
-
-// Hello
