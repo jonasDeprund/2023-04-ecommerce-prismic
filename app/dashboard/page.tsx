@@ -9,17 +9,20 @@ const fetchOrders = async () => {
   if (!user) {
     return { message: 'Not logged in' };
   }
-  const order = await prisma.order.findMany({
+  const orders = await prisma.order.findMany({
     where: { userId: user?.user?.id },
     include: { products: true },
   });
   return orders;
 };
 
-export default function dashbaord() {
+export default async function dashbaord() {
+  const orders = await fetchOrders();
+  console.log(orders);
+
   return (
     <div>
-      <h1>dashboard</h1>
+      <h1>Your orders</h1>
     </div>
   );
 }
