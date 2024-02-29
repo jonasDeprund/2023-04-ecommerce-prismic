@@ -2,6 +2,7 @@ import React from 'react';
 import { PrismaClient } from '@prisma/client';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
+import formatPrice from '@/util/PriceFormat';
 
 const fetchOrders = async () => {
   const prisma = new PrismaClient();
@@ -33,6 +34,17 @@ export default async function dashbaord() {
           <div key={order.id} className="rounded-lg">
             <h2>Order reference: {order.id}</h2>
             <p>Time: {new Date(order.createDate)}</p>
+            <p className="text-md py-2">
+              Status :{' '}
+              <span
+                className={`${
+                  order.status === 'complete' ? 'bg-teal-500' : 'bg-orange-500'
+                } text-white py-1 rounded-md px-2 mx-2 text-sm`}
+              >
+                {order.status}
+              </span>
+            </p>
+            <p className="font-medium">Total : {formatPrice(order.amount)}</p>
           </div>
         ))}
       </div>
