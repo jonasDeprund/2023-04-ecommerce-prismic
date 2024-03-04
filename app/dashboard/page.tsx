@@ -45,6 +45,12 @@ export default async function dashbaord() {
               </span>
             </p>
             <p className="font-medium">Total : {formatPrice(order.amount)}</p>
+            <div className="flex gap-8"></div>
+            {order.products.map((product) => (
+              <div className="py-2" key={product.id}>
+                <h2>{product.name}</h2>
+              </div>
+            ))}
           </div>
         ))}
       </div>
