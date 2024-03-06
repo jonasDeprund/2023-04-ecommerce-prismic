@@ -14,7 +14,7 @@ const fetchOrders = async () => {
     return null;
   }
   const orders = await prisma.order.findMany({
-    where: { userId: user?.user?.id },
+    where: { userId: user?.user?.id, status: 'complete' },
     include: { products: true },
   });
   return orders;
@@ -36,7 +36,9 @@ export default async function dashbaord() {
         {orders.map((order) => (
           <div key={order.id} className="rounded-lg p-8 my-12">
             <h2>Order reference: {order.id}</h2>
-            <p>Time: {new Date(order.createDate)}</p>
+            <p className="text-xs">
+              Time: {new Date(order.createdDate).toString()}
+            </p>
             <p className="text-md py-2">
               Status :{' '}
               <span
@@ -47,12 +49,14 @@ export default async function dashbaord() {
                 {order.status}
               </span>
             </p>
-            <p className="font-medium">Total : {formatPrice(order.amount)}</p>
-            <div className="flex gap-8"></div>
+            <p className="text-xs">
+              Time: {new Date(order.createdDate).toString()}
+            </p>
+            <div className="text-sm lg:flex items-center justify-items-center gap-2"></div>
             {order.products.map((product) => (
               <div className="py-2" key={product.id}>
                 <h2 className="py-2">{product.name}</h2>
-                <div className="flex items-center gap-4">
+                <div className="flex items-baseline gap-4">
                   <Image
                     src={product.image!}
                     width={36}
