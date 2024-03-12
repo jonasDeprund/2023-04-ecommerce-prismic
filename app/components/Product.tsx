@@ -20,7 +20,7 @@ export default function Product({
         query: { name, image, unit_amount, id, description, features },
       }}
     >
-      <div className="text-gray-700">
+      <div>
         <Image
           src={image}
           alt={name}
