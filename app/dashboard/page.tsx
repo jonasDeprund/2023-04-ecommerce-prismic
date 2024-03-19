@@ -34,7 +34,10 @@ export default async function dashbaord() {
     <div>
       <div className="font-medium">
         {orders.map((order) => (
-          <div key={order.id} className="rounded-lg p-8 my-12">
+          <div
+            key={order.id}
+            className="rounded-lg p-8 my-4 space-y-2 bg-base-200"
+          >
             <h2>Order reference: {order.id}</h2>
             <p className="text-xs">
               Time: {new Date(order.createdDate).toString()}

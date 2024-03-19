@@ -1,8 +1,9 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useCartStore } from '@/store';
 import { AddCartType } from '@/types/AddCartType';
 import { createStore } from 'zustand';
+import { spawn } from 'child_process';
 
 export default function AddCart({
   id,
@@ -12,15 +13,24 @@ export default function AddCart({
   image,
 }: AddCartType) {
   const cartStore = useCartStore();
+  const [added, setAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    cartStore.addProduct({ id, name, image, unit_amount, quantity });
+    setAdded(true);
+    setTimeout(() => {
+      setAdded(false);
+    }, 500);
+  };
   return (
     <>
       <button
-        onClick={() =>
-          cartStore.addProduct({ id, name, image, unit_amount, quantity })
-        }
+        onClick={handleAddToCart}
+        disabled={added}
         className="my-4 btn btn-primary w-full"
       >
-        Add to cart
+        {!added && <span>Add to cart</span>}
+        {added && <span>Adding to cart</span>}
       </button>
     </>
   );
