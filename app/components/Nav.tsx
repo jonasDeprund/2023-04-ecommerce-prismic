@@ -45,13 +45,19 @@ export default function Nav({ user }: Session) {
         {user && (
           <Link href={'/dashboard'}>
             <li>
-              <Image
-                src={user?.image as string}
-                alt={user.name as string}
-                width={36}
-                height={36}
-                className="rounded-full"
-              />
+              <div>
+                <Image
+                  src={user?.image as string}
+                  alt={user.name as string}
+                  width={36}
+                  height={36}
+                  className="rounded-full"
+                />
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu p-4 space-y-4 shadow bg-base-100"
+                ></ul>
+              </div>
             </li>
           </Link>
         )}
