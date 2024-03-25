@@ -56,6 +56,7 @@ export default function Nav({ user }: Session) {
                 <ul
                   tabIndex={0}
                   className="dropdown-content menu p-4 space-y-4 shadow bg-base-100"
+                  // salut
                 ></ul>
               </div>
             </li>
