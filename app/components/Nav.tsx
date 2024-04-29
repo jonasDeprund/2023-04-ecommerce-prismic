@@ -8,6 +8,7 @@ import Cart from './Cart';
 import { useCartStore } from '@/store';
 import { AiFillShopping } from 'react-icons/ai';
 import { AnimatePresence, motion } from 'framer-motion';
+import DarkLight from './DarkMode';
 
 export default function Nav({ user }: Session) {
   const cartStore = useCartStore();
@@ -41,6 +42,8 @@ export default function Nav({ user }: Session) {
             <button onClick={() => signIn()}>Sign In</button>
           </li>
         )}
+        {/* Dark mode */}
+        <DarkLight />
         {/* {If the user is not logged in} */}
         {user && (
           <Link href={'/dashboard'}>
