@@ -1,11 +1,23 @@
 'use client';
 import React from 'react';
 
+import { useThemeStore } from '@/store';
+
 export default function DarkLight() {
+  const themeStore = useThemeStore();
   return (
     <label className="swap swap-rotate">
-      {/* this hidden checkbox controls the state */}
-      <input type="checkbox" />
+      <input
+        defaultChecked={themeStore.mode === 'light'}
+        type="checkbox"
+        onClick={() => {
+          if (themeStore.mode === 'light') {
+            themeStore.toggleMode('dark');
+          } else {
+            themeStore.toggleMode('light');
+          }
+        }}
+      />
 
       {/* sun icon */}
       <svg

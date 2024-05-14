@@ -8,7 +8,7 @@ import Cart from './Cart';
 import { useCartStore } from '@/store';
 import { AiFillShopping } from 'react-icons/ai';
 import { AnimatePresence, motion } from 'framer-motion';
-import DarkLight from './DarkMode';
+import DarkLight from './DarkLight';
 
 export default function Nav({ user }: Session) {
   const cartStore = useCartStore();
