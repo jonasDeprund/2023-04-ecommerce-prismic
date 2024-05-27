@@ -32,7 +32,7 @@ export default function Cart() {
       {/* Cart */}
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="bg-base-300 absolute right-0 top-0 h-screen overflow-y-scroll w-full lg:w-2/5"
+        className="bg-base-200 absolute right-0 top-0 h-screen overflow-y-scroll w-full lg:w-2/5"
       >
         {cartStore.onCheckout === 'cart' && (
           <button
@@ -57,7 +57,7 @@ export default function Cart() {
               <motion.div
                 layout
                 key={item.id}
-                className='"flex p-4 gap-4 bg-base-100 my-4'
+                className='"flex p-4 gap-4 bg-base-100 my-4 rounded-md'
               >
                 <Image
                   className="rounded-md h-24"
